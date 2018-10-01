@@ -1,0 +1,24 @@
+#!/bin/bash
+
+TODAY=`date +%Y%m%d%H%M`
+
+echo $TODAY
+
+if [ ! -d ~/builds/centos-update ]; then
+  mkdir -p ~/builds/centos-update
+fi
+
+if [ ! -f ~/builds/centos-update/Dockerfile ]; then
+  echo "Dockerfile does not exist.  Copy Dockerfile to ~/builds/centos-update"
+  exit 1
+else
+  echo "Building and updating image."
+  docker build ~/builds/centos-update --tag centos7:current
+fi
+
+
+docker run -d -it --name centos7-current centos7:current
+
+docker commit -a "John K. Nall" -m "Patches up to $TODAY" centos7-current johnknall/centos7:$TODAY
+
+docker push johnknall/centos7:$TODAY
