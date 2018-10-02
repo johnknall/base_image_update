@@ -13,7 +13,7 @@ if [ ! -f ~/builds/centos-update/Dockerfile ]; then
   exit 1
 else
   echo "Building and updating image."
-  docker build -rm ~/builds/centos-update --tag centos7:current
+  docker build --rm ~/builds/centos-update --tag centos7:current
 fi
 
 
