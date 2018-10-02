@@ -22,3 +22,7 @@ docker run -d -it --name centos7-current centos7:current
 docker commit -a "John K. Nall" -m "Patches up to $TODAY" centos7-current johnknall/centos7:$TODAY
 
 docker push johnknall/centos7:$TODAY
+
+docker commit -a "John K. Nall" -m "Patches up to $TODAY" centos7-current johnknall/centos7:latest
+
+docker push johnknall/centos7:latest
