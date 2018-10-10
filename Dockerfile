@@ -1,4 +1,4 @@
-FROM johnknall/centos7:latest
+FROM grcloud/centos7:latest
 
 RUN sed -i 's/tsflags=nodocs//' /etc/yum.conf && \
 yum update -y && \
